@@ -1,7 +1,8 @@
 
 public class Cliente
 {
-	String sNome, sCPF, sGenero;
+	String sNome, sCPF;
+	char cGenero;
 	boolean bSocio;
 	int iIdade;
 	String sNumeroSocio;
@@ -19,11 +20,11 @@ public class Cliente
 	{
 		this.bSaiu = bSaiu;
 	}
-	public Cliente(String sNome,String sCPF,String sGenero,int iIdade, boolean bSocio,String sNumeroSocio)
+	public Cliente(String sNome,String sCPF,char cGenero,int iIdade, boolean bSocio,String sNumeroSocio)
 	{
 	  this.sNome = sNome;
 	  this.sCPF = sCPF;
-	  this.sGenero = sGenero;
+	  this.cGenero = cGenero;
 	  this.iIdade = iIdade;
 	  this.bSocio = bSocio;
 	  this.sNumeroSocio = sNumeroSocio;
@@ -61,13 +62,13 @@ public class Cliente
 	{
 		this.sCPF = sCPF;
 	}
-	public String getGenero() 
+	public char getGenero() 
 	{
-		return sGenero;
+		return cGenero;
 	}
-	public void setGenero(String genero) 
+	public void setGenero(char genero) 
 	{
-		this.sGenero = genero;
+		this.cGenero = genero;
 	}
 	public int getIdade() 
 	{
