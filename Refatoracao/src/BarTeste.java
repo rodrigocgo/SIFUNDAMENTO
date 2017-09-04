@@ -62,4 +62,12 @@ public class BarTeste {
 	{
 		oBar.AdicionaCliente("Fulano", "1234", 'M', 22, true, "");
 	}
+	
+	@Test 
+	public void testaSaidaCliente()
+	{
+		assertEquals(3,oBar.RetornaTotalPessoas());
+		oBar.RegistraSaidaCliente("123");
+		assertEquals(2,oBar.RetornaTotalPessoas());
+	}
 }

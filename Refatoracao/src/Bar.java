@@ -37,4 +37,9 @@ public class Bar
 	   }
 	   return (iRetorno/iTamanhoTotal)*100;
 	}
+	
+	void RegistraSaidaCliente(String sCpf)
+	{
+		oGerenciadorListaCliente.RegistraSaidaCliente(sCpf);
+	}
 }
