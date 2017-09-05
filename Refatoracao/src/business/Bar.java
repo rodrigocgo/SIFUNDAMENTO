@@ -1,3 +1,6 @@
+package business;
+import persistence.Cliente;
+
 public class Bar
 {
 	
@@ -8,22 +11,22 @@ public class Bar
 	{
 		oGerenciadorListaCliente = new GerenciadorListaCliente();
 	}
-	void AdicionaCliente(String sNome,String sCpf,char cGenero,int iIdade,boolean bSocio,String sNumeroSocio)
+	public void AdicionaCliente(String sNome,String sCpf,char cGenero,int iIdade,boolean bSocio,String sNumeroSocio)
 	{
 		oGerenciadorListaCliente.AdicionaCliente(oCliente,sNome,sCpf,cGenero,iIdade,bSocio,sNumeroSocio);
 	}
 	
-	boolean ClienteNoBarCPF(String sCpf)
+	public boolean ClienteNoBarCPF(String sCpf)
 	{
 	   return oGerenciadorListaCliente.RetornaPessoaCPF(sCpf);
 	}
 	
-	int RetornaTotalPessoas()
+	public int RetornaTotalPessoas()
 	{
 		return oGerenciadorListaCliente.RetornaTotalPessoas();
 	}
 	
-	double GetPercentualCliente(String sParametro)
+	public double GetPercentualCliente(String sParametro)
 	{ 
 	   int iRetorno = 0; 
 	   double iTamanhoTotal = oGerenciadorListaCliente.RetornaTotalPessoas();
@@ -38,7 +41,7 @@ public class Bar
 	   return (iRetorno/iTamanhoTotal)*100;
 	}
 	
-	void RegistraSaidaCliente(String sCpf)
+	public void RegistraSaidaCliente(String sCpf)
 	{
 		oGerenciadorListaCliente.RegistraSaidaCliente(sCpf);
 	}

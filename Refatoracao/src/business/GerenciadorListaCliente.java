@@ -1,4 +1,7 @@
+package business;
 import java.util.ArrayList;
+
+import persistence.Cliente;
 
 public class GerenciadorListaCliente 
 {
@@ -6,11 +9,11 @@ public class GerenciadorListaCliente
 	
 	public GerenciadorListaCliente()
 	{
-	  listaCliente = new ArrayList<Cliente>();	
+	   listaCliente = new ArrayList<Cliente>();	
 	}
 	
-	void AdicionaCliente(Cliente oCliente,String sNome,String sCPF,char cGenero,int iIdade, boolean bSocio,String sNumeroSocio)
-	{  
+	void VerificaCPFeNumeroSocio(String sCPF, String sNumeroSocio, boolean bSocio)
+	{
 		for(int i = 0;  i < listaCliente.size(); i++)
 		{
 		   if (listaCliente.get(i).getCPF() == sCPF) 
@@ -18,17 +21,22 @@ public class GerenciadorListaCliente
 		  
 		   if (listaCliente.get(i).getNumeroSocio() == sNumeroSocio && listaCliente.get(i).getNumeroSocio().length() > 0)
 		     throw new IllegalArgumentException("NUMERO SOCIO JA CADASTRADO");
+		   
+			if (bSocio == true && sNumeroSocio.length() == 0) 
+				  throw new IllegalArgumentException("NUMERO DO SOCIO OBRIGATORIO");
 		}
-		
-		if (bSocio == true && sNumeroSocio.length() == 0) 
-		  throw new IllegalArgumentException("NUMERO DO SOCIO OBRIGATORIO");
+	}
+	
+	public void AdicionaCliente(Cliente oCliente,String sNome,String sCPF,char cGenero,int iIdade, boolean bSocio,String sNumeroSocio)
+	{  	
+		VerificaCPFeNumeroSocio(sCPF,sNumeroSocio, bSocio);
 		
 		oCliente = new Cliente(sNome,sCPF,cGenero,iIdade, bSocio,sNumeroSocio);
 		
 		listaCliente.add(oCliente);
 	}
 	
-	boolean ClienteNoBarCPF(String sCPF)
+	public boolean ClienteNoBarCPF(String sCPF)
 	{
 		boolean bAux = false;
 		
@@ -41,12 +49,12 @@ public class GerenciadorListaCliente
 		return bAux;
 	}
 	
-	int RetornaTotalPessoas()
+	public int RetornaTotalPessoas()
 	{
-	  return listaCliente.size();	
+	   return listaCliente.size();	
 	}
 	
-	boolean RetornaPessoaCPF(String sString)
+	public boolean RetornaPessoaCPF(String sString)
 	{
        boolean bEsta = false;
       
@@ -57,7 +65,7 @@ public class GerenciadorListaCliente
         return bEsta;
 	}
 	
-	int RetornaTotalGenero(char cString)
+	public int RetornaTotalGenero(char cString)
 	{
        int iContador = 0; 
 	   
@@ -70,7 +78,7 @@ public class GerenciadorListaCliente
        return iContador; 
 	}
 	
-	int RetornaTotalSocio()
+	public int RetornaTotalSocio()
 	{
 		int iContador = 0; 
 		   
@@ -83,7 +91,7 @@ public class GerenciadorListaCliente
 	    return iContador; 
 	}
 	
-	void RegistraSaidaCliente(String sCpf)
+	public void RegistraSaidaCliente(String sCpf)
 	{
 		for(int i = 0;  i < listaCliente.size(); i++)
 		{

@@ -1,7 +1,11 @@
+package tests;
 import static org.junit.Assert.*;
 import org.junit.Before;
 
 import org.junit.Test;
+
+import business.Bar;
+
 
 public class BarTeste {
 	Bar oBar;
@@ -11,9 +15,9 @@ public class BarTeste {
 	{
 		 oBar = new Bar();
 		
-		 oBar.AdicionaCliente("Fulano", "123", 'M', 22, false, "");
-	     oBar.AdicionaCliente("Teste", "1232", 'F', 22, false, "");
-	     oBar.AdicionaCliente("Nome", "1234", 'M', 22, true, "11");	     
+		 oBar.AdicionaCliente("Fulano", "384.490.360-70", 'M', 22, false, "");
+	     oBar.AdicionaCliente("Teste", "934.828.380-46", 'F', 22, false, "");
+	     oBar.AdicionaCliente("Nome", "477.119.570-68", 'M', 22, true, "11");	     
 	}
 	@Test
 	public void testaPercentualMasculino() 
@@ -30,7 +34,7 @@ public class BarTeste {
 	@Test	
 	public void testaClienteNoBarCPF() 
 	{		
-		assertEquals(true,oBar.ClienteNoBarCPF("123"));
+		assertEquals(true,oBar.ClienteNoBarCPF("477.119.570-68"));
 	}
 	
 	@Test
@@ -48,7 +52,7 @@ public class BarTeste {
 	@Test(expected = IllegalArgumentException.class)
 	public void testaExcecaoCPF()
 	{
-		oBar.AdicionaCliente("Fulano", "123", 'M', 22, false, "");
+		oBar.AdicionaCliente("Fulano", "477.119.570-68", 'M', 22, false, "");
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
@@ -67,7 +71,7 @@ public class BarTeste {
 	public void testaSaidaCliente()
 	{
 		assertEquals(3,oBar.RetornaTotalPessoas());
-		oBar.RegistraSaidaCliente("123");
+		oBar.RegistraSaidaCliente("477.119.570-68");
 		assertEquals(2,oBar.RetornaTotalPessoas());
 	}
 }
