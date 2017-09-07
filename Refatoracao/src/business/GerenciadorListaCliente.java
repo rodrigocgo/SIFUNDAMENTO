@@ -84,7 +84,7 @@ public class GerenciadorListaCliente
     boolean bEsta = false;
     
     for(int i = 0;  i < RetornaTotalPessoasNoBar(); i++)
-	    if (listaCliente.get(i).getCPF() == sString) 
+	    if (listaCliente.get(i).getCPF().equals(sString) == true) 
 		    bEsta = true;		
 	  
     return bEsta;

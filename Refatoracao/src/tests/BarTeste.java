@@ -17,7 +17,8 @@ public class BarTeste {
 		
 		 oBar.AdicionaCliente("Fulano", "384.490.360-70", 'M', 22, false, "");
 	   oBar.AdicionaCliente("Teste", "934.828.380-46", 'F', 22, false, "");
-	   oBar.AdicionaCliente("Nome", "477.119.570-68", 'M', 22, true, "11");	     
+	   oBar.AdicionaCliente("Nome", "477.119.570-68", 'M', 22, true, "11");
+	    
 	}
 	@Test
 	public void testaPercentualMasculino() 
