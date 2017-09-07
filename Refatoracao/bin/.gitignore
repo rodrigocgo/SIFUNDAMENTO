@@ -1,9 +1,3 @@
-/Bar.class
-/BarTeste.class
-/Cliente.class
-/GerenciadorLista.class
-/GerenciadorListaCliente.class
-/uinterface/
-/tests/
-/persistence/
 /business/
+/persistence/
+/tests/

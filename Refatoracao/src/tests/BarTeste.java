@@ -16,8 +16,8 @@ public class BarTeste {
 		 oBar = new Bar();
 		
 		 oBar.AdicionaCliente("Fulano", "384.490.360-70", 'M', 22, false, "");
-	     oBar.AdicionaCliente("Teste", "934.828.380-46", 'F', 22, false, "");
-	     oBar.AdicionaCliente("Nome", "477.119.570-68", 'M', 22, true, "11");	     
+	   oBar.AdicionaCliente("Teste", "934.828.380-46", 'F', 22, false, "");
+	   oBar.AdicionaCliente("Nome", "477.119.570-68", 'M', 22, true, "11");	     
 	}
 	@Test
 	public void testaPercentualMasculino() 
@@ -44,10 +44,16 @@ public class BarTeste {
 	}
 	
 	@Test
-	public void testaRetornaTotalPessoas()
+	public void testaRetornaTotalPessoasCadastradas()
 	{	
-		assertEquals(3,oBar.RetornaTotalPessoas());
+		assertEquals(3,oBar.RetornaTotalPessoasCadastradas());
 	}
+	
+	@Test
+  public void testaRetornaTotalPessoasNoBar()
+  { 
+    assertEquals(3,oBar.RetornaTotalPessoasNoBar());
+  }
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testaExcecaoCPF()
@@ -70,8 +76,8 @@ public class BarTeste {
 	@Test 
 	public void testaSaidaCliente()
 	{
-		assertEquals(3,oBar.RetornaTotalPessoas());
+		assertEquals(3,oBar.RetornaTotalPessoasNoBar());
 		oBar.RegistraSaidaCliente("477.119.570-68");
-		assertEquals(2,oBar.RetornaTotalPessoas());
+		assertEquals(2,oBar.RetornaTotalPessoasNoBar());
 	}
 }

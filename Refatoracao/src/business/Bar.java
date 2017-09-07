@@ -3,17 +3,16 @@ import persistence.Cliente;
 
 public class Bar
 {
-	
-    private Cliente oCliente;
+  private Cliente oCliente;
 	private GerenciadorListaCliente oGerenciadorListaCliente; 
 	
 	public Bar()
 	{
-		oGerenciadorListaCliente = new GerenciadorListaCliente();
+	  oGerenciadorListaCliente = new GerenciadorListaCliente();
 	}
 	public void AdicionaCliente(String sNome,String sCpf,char cGenero,int iIdade,boolean bSocio,String sNumeroSocio)
 	{
-		oGerenciadorListaCliente.AdicionaCliente(oCliente,sNome,sCpf,cGenero,iIdade,bSocio,sNumeroSocio);
+	  oGerenciadorListaCliente.AdicionaCliente(oCliente,sNome,sCpf,cGenero,iIdade,bSocio,sNumeroSocio);
 	}
 	
 	public boolean ClienteNoBarCPF(String sCpf)
@@ -21,21 +20,24 @@ public class Bar
 	   return oGerenciadorListaCliente.RetornaPessoaCPF(sCpf);
 	}
 	
-	public int RetornaTotalPessoas()
+	public int RetornaTotalPessoasCadastradas()
 	{
-		return oGerenciadorListaCliente.RetornaTotalPessoas();
+		return oGerenciadorListaCliente.RetornaPessoasTotal(false);
 	}
-	
+	public int RetornaTotalPessoasNoBar()
+	{
+	  return oGerenciadorListaCliente.RetornaPessoasTotal(true);
+	}
 	public double GetPercentualCliente(String sParametro)
 	{ 
 	   int iRetorno = 0; 
-	   double iTamanhoTotal = oGerenciadorListaCliente.RetornaTotalPessoas();
+	   double iTamanhoTotal = oGerenciadorListaCliente.RetornaPessoasTotal(true);
 	  
 	   switch(sParametro)		
 	   {
-	      case "SOCIO" : iRetorno = oGerenciadorListaCliente.RetornaTotalSocio();            break;
-	      case "M"        : iRetorno = oGerenciadorListaCliente.RetornaTotalGenero('M');     break;
-	      case "F"         : iRetorno = oGerenciadorListaCliente.RetornaTotalGenero('F');      break;
+	      case "SOCIO"     : iRetorno = oGerenciadorListaCliente.RetornaQuantidaDefinida(1,' '); break;
+	      case "M"         : iRetorno = oGerenciadorListaCliente.RetornaQuantidaDefinida(2,'M'); break;
+	      case "F"         : iRetorno = oGerenciadorListaCliente.RetornaQuantidaDefinida(2,'F'); break;
 	      default          : break;
 	   }
 	   return (iRetorno/iTamanhoTotal)*100;

@@ -29,7 +29,7 @@ public class Cliente
 	  this.iIdade = iIdade;
 	  this.bSocio = bSocio;
 	  this.sNumeroSocio = sNumeroSocio;
-	  this.bSaiu = true;
+	  this.bSaiu = false;
 	}
 	public void setNumeroSocio(String sNumeroSocio)
 	{
