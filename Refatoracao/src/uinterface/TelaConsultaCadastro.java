@@ -1,13 +1,11 @@
 package uinterface;
 
 import business.Bar;
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import java.awt.Window.Type;
 import java.awt.Color;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
@@ -19,6 +17,10 @@ import java.awt.event.ActionEvent;
 public class TelaConsultaCadastro extends JFrame
 {
 
+  /**
+   * 
+   */
+  private static final long serialVersionUID = 1L;
   private JPanel contentPane;
   private JTextField txtEntradaCPF;
   private JPanel pnlDevolveConsulta;
@@ -58,7 +60,7 @@ public class TelaConsultaCadastro extends JFrame
     contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
     setContentPane(contentPane);
     contentPane.setLayout(null);
-    this.setDefaultCloseOperation(TelaConsultaCadastro.HIDE_ON_CLOSE);
+    this.setDefaultCloseOperation(TelaConsultaCadastro.DISPOSE_ON_CLOSE);
     
     txtEntradaCPF = new JTextField();
     txtEntradaCPF.setBounds(10, 57, 336, 20);

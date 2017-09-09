@@ -3,17 +3,7 @@ import business.Bar;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import java.awt.BorderLayout;
 import javax.swing.JLabel;
-import java.awt.GridLayout;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import javax.swing.BoxLayout;
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.RowSpec;
-import com.jgoodies.forms.layout.FormSpecs;
 import javax.swing.SpringLayout;
 import java.awt.Font;
 import javax.swing.JButton;
@@ -21,15 +11,13 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import org.eclipse.wb.swing.FocusTraversalOnArray;
-import java.awt.Component;
 
 public class MainForm
 {
 
   private JFrame frame;  
   Bar oBar;
-  TelaConsultaCadastro frmConsultaCadastro;
+   
 
   /**
    * Launch the application.
@@ -65,8 +53,7 @@ public class MainForm
    */
   private void ChamaTelaConsulta()
   {
-    frmConsultaCadastro.setVisible(true);
-    frmConsultaCadastro.RetornaEstadOriginal();
+    TelaConsultaCadastro.main(null, oBar);
   }
   
   private void ControlaAtalho(KeyEvent e)
@@ -91,7 +78,6 @@ public class MainForm
   private void initialize()
   {
     oBar = new Bar();
-    frmConsultaCadastro = new TelaConsultaCadastro(oBar);
     frame = new JFrame();
     frame.setBounds(100, 100, 294, 366);
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -137,7 +123,7 @@ public class MainForm
     springLayout.putConstraint(SpringLayout.WEST, btnSaida, 0, SpringLayout.WEST, lblTitulo);
     springLayout.putConstraint(SpringLayout.EAST, btnSaida, 0, SpringLayout.EAST, btnFConsulta);
     frame.getContentPane().add(btnSaida);
-    frame.getContentPane().setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{btnFConsulta, btnCadastraCliente, btnRegistra, btnSaida}));
+
     
     btnFConsulta.addKeyListener(new KeyAdapter() {
       @Override
