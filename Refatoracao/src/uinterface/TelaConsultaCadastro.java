@@ -7,6 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
+import java.awt.Container;
+
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -52,15 +54,16 @@ public class TelaConsultaCadastro extends JFrame
    */
   public TelaConsultaCadastro(Bar oBar)
   {
+   
+    setTitle("Consulta CPF Cliente");
     setType(Type.UTILITY);
-    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setBounds(100, 100, 373, 253);
     contentPane = new JPanel();
     contentPane.setBackground(Color.WHITE);
     contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
     setContentPane(contentPane);
     contentPane.setLayout(null);
-    this.setDefaultCloseOperation(TelaConsultaCadastro.DISPOSE_ON_CLOSE);
+    setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     
     txtEntradaCPF = new JTextField();
     txtEntradaCPF.setBounds(10, 57, 336, 20);
@@ -120,7 +123,7 @@ public class TelaConsultaCadastro extends JFrame
     btnSair.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) 
       {
-        setVisible(false);
+        dispose();
       }
     });
  

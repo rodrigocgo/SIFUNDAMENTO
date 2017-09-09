@@ -52,19 +52,23 @@ public class MainForm
    * Initialize the contents of the frame.
    */
   private void ChamaTelaConsulta()
-  {
-    TelaConsultaCadastro.main(null, oBar);
+  {  
+    TelaConsultaCadastro.main(null, oBar); 
+    
   }
   
+ 
   private void ControlaAtalho(KeyEvent e)
   {
+    
+    
     if (e.getKeyCode() == KeyEvent.VK_F1)
     {
    
     }
     else if (e.getKeyCode() == KeyEvent.VK_F2)
-    {
-      ChamaTelaConsulta();
+    {   
+      ChamaTelaConsulta();  
     }
     else if (e.getKeyCode() == KeyEvent.VK_F3)
     {
@@ -74,6 +78,11 @@ public class MainForm
     {
       
     }
+    else if (e.getKeyCode() == KeyEvent.VK_F5)
+    {
+      
+    }
+    
   }
   private void initialize()
   {
@@ -123,6 +132,13 @@ public class MainForm
     springLayout.putConstraint(SpringLayout.WEST, btnSaida, 0, SpringLayout.WEST, lblTitulo);
     springLayout.putConstraint(SpringLayout.EAST, btnSaida, 0, SpringLayout.EAST, btnFConsulta);
     frame.getContentPane().add(btnSaida);
+    
+    JButton btnImprimirRelatorio = new JButton("F5 -Relatorio");
+    springLayout.putConstraint(SpringLayout.NORTH, btnImprimirRelatorio, 16, SpringLayout.SOUTH, btnSaida);
+    springLayout.putConstraint(SpringLayout.WEST, btnImprimirRelatorio, 0, SpringLayout.WEST, lblTitulo);
+    springLayout.putConstraint(SpringLayout.EAST, btnImprimirRelatorio, 0, SpringLayout.EAST, btnFConsulta);
+    btnImprimirRelatorio.setFont(new Font("Source Sans Pro", Font.BOLD, 12));
+    frame.getContentPane().add(btnImprimirRelatorio);
 
     
     btnFConsulta.addKeyListener(new KeyAdapter() {
