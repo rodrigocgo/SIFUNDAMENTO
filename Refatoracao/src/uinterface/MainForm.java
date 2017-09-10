@@ -16,6 +16,8 @@ public class MainForm
 {
 
   private JFrame frame;  
+  private JLabel lblPessoasCad;
+  private JLabel lblPessoasnoBar;
   Bar oBar;
    
 
@@ -51,20 +53,41 @@ public class MainForm
   /**
    * Initialize the contents of the frame.
    */
+  private void ChamaTelaCadastro()
+  {
+    DialogCadastro dlgCadastro = new DialogCadastro();
+    dlgCadastro.ReferenciaObjetoBar(oBar);
+    dlgCadastro.setVisible(true);
+    AtualizaLabel();
+  }
   private void ChamaTelaConsulta()
   {  
-    TelaConsultaCadastro.main(null, oBar); 
+    DialogConsultaCliente dlgConsultaModal = new DialogConsultaCliente();
+    dlgConsultaModal.ReferenciaObjetoBar(oBar);
+    dlgConsultaModal.setVisible(true);
+    
     
   }
+  public void AtualizaLabel()
+  {
+    lblPessoasCad.setText(Integer.toString(oBar.RetornaTotalPessoasCadastradas()));
+    lblPessoasnoBar.setText(Integer.toString(oBar.RetornaTotalPessoasNoBar()));
+  }
+  private void ChamaTelaEntradaSaida()
+  {
+    DialogEntradaSaida dlgEntradaSaida = new DialogEntradaSaida();
+    dlgEntradaSaida.ReferenciaObjetoBar(oBar);
+    dlgEntradaSaida.setVisible(true);
+    AtualizaLabel();
+  }
   
- 
   private void ControlaAtalho(KeyEvent e)
   {
     
     
     if (e.getKeyCode() == KeyEvent.VK_F1)
     {
-   
+      ChamaTelaCadastro();
     }
     else if (e.getKeyCode() == KeyEvent.VK_F2)
     {   
@@ -72,13 +95,9 @@ public class MainForm
     }
     else if (e.getKeyCode() == KeyEvent.VK_F3)
     {
-      
+      ChamaTelaEntradaSaida();
     }
     else if (e.getKeyCode() == KeyEvent.VK_F4)
-    {
-      
-    }
-    else if (e.getKeyCode() == KeyEvent.VK_F5)
     {
       
     }
@@ -117,7 +136,12 @@ public class MainForm
     springLayout.putConstraint(SpringLayout.EAST, btnCadastraCliente, -80, SpringLayout.EAST, frame.getContentPane());
     frame.getContentPane().add(btnCadastraCliente);
     
-    JButton btnRegistra = new JButton("F3 - Entrada CPF");
+    JButton btnRegistra = new JButton("F3 - Entrada/Saida");
+    btnRegistra.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+        ChamaTelaEntradaSaida();
+      }
+    });
     
     btnRegistra.setFont(new Font("Source Sans Pro", Font.BOLD, 12));
     springLayout.putConstraint(SpringLayout.NORTH, btnRegistra, 21, SpringLayout.SOUTH, btnFConsulta);
@@ -125,31 +149,37 @@ public class MainForm
     springLayout.putConstraint(SpringLayout.EAST, btnRegistra, 0, SpringLayout.EAST, btnFConsulta);
     frame.getContentPane().add(btnRegistra);
     
-    JButton btnSaida = new JButton("F4 - Saida CPF");
-    
-    btnSaida.setFont(new Font("Source Sans Pro", Font.BOLD, 12));
-    springLayout.putConstraint(SpringLayout.NORTH, btnSaida, 21, SpringLayout.SOUTH, btnRegistra);
-    springLayout.putConstraint(SpringLayout.WEST, btnSaida, 0, SpringLayout.WEST, lblTitulo);
-    springLayout.putConstraint(SpringLayout.EAST, btnSaida, 0, SpringLayout.EAST, btnFConsulta);
-    frame.getContentPane().add(btnSaida);
-    
-    JButton btnImprimirRelatorio = new JButton("F5 -Relatorio");
-    springLayout.putConstraint(SpringLayout.NORTH, btnImprimirRelatorio, 16, SpringLayout.SOUTH, btnSaida);
+    JButton btnImprimirRelatorio = new JButton("F4 -Relatorio");
+    springLayout.putConstraint(SpringLayout.NORTH, btnImprimirRelatorio, 18, SpringLayout.SOUTH, btnRegistra);
     springLayout.putConstraint(SpringLayout.WEST, btnImprimirRelatorio, 0, SpringLayout.WEST, lblTitulo);
     springLayout.putConstraint(SpringLayout.EAST, btnImprimirRelatorio, 0, SpringLayout.EAST, btnFConsulta);
     btnImprimirRelatorio.setFont(new Font("Source Sans Pro", Font.BOLD, 12));
     frame.getContentPane().add(btnImprimirRelatorio);
+    
+    JLabel lblTotalPessoas = new JLabel("Pessoas Cadast.:");
+    lblTotalPessoas.setFont(new Font("Source Sans Pro", Font.BOLD, 11));
+    frame.getContentPane().add(lblTotalPessoas);
+    
+    JLabel lblPessoasNoBar = new JLabel("Pessoas no Bar.:");
+    springLayout.putConstraint(SpringLayout.EAST, lblTotalPessoas, 0, SpringLayout.EAST, lblPessoasNoBar);
+    springLayout.putConstraint(SpringLayout.NORTH, lblPessoasNoBar, 75, SpringLayout.SOUTH, btnImprimirRelatorio);
+    springLayout.putConstraint(SpringLayout.WEST, lblPessoasNoBar, 10, SpringLayout.WEST, frame.getContentPane());
+    lblPessoasNoBar.setFont(new Font("Source Sans Pro", Font.BOLD, 11));
+    frame.getContentPane().add(lblPessoasNoBar);
+    
+    lblPessoasnoBar = new JLabel("0");
+    springLayout.putConstraint(SpringLayout.NORTH, lblPessoasnoBar, 0, SpringLayout.NORTH, lblPessoasNoBar);
+    springLayout.putConstraint(SpringLayout.WEST, lblPessoasnoBar, 8, SpringLayout.EAST, lblPessoasNoBar);
+    frame.getContentPane().add(lblPessoasnoBar);
+    
+    lblPessoasCad = new JLabel("0");
+    springLayout.putConstraint(SpringLayout.WEST, lblPessoasCad, 8, SpringLayout.EAST, lblTotalPessoas);
+    springLayout.putConstraint(SpringLayout.SOUTH, lblPessoasCad, -5, SpringLayout.NORTH, lblPessoasnoBar);
+    springLayout.putConstraint(SpringLayout.NORTH, lblTotalPessoas, 0, SpringLayout.NORTH, lblPessoasCad);
+    frame.getContentPane().add(lblPessoasCad);
 
     
     btnFConsulta.addKeyListener(new KeyAdapter() {
-      @Override
-      public void keyPressed(KeyEvent e) 
-      {
-        ControlaAtalho(e);
-      }
-    });
-    
-    btnSaida.addKeyListener(new KeyAdapter() {
       @Override
       public void keyPressed(KeyEvent e) 
       {
@@ -176,7 +206,8 @@ public class MainForm
     btnCadastraCliente.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) 
       {    
-       
+        ChamaTelaCadastro();
+   
       }
     });
     
@@ -186,5 +217,7 @@ public class MainForm
         ChamaTelaConsulta();
       }
     });
+    
+   
   }
 }

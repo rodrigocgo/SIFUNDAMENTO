@@ -21,15 +21,15 @@ public class BarTeste {
 	    
 	}
 	@Test
-	public void testaPercentualMasculino() 
+	public void testaPercentualMasculinoNoBar() 
 	{				
-		assertEquals(66.66,oBar.GetPercentualCliente("M"),1);
+		assertEquals(66.66,oBar.retornaPercentualClienteNoBar("M"),1);
 	}
 	
 	@Test
 	public void testaPercentualFeminino() 
 	{
-		assertEquals(33.33,oBar.GetPercentualCliente("F"),1);
+		assertEquals(33.33,oBar.retornaPercentualClienteNoBar("F"),1);
 	}
 	
 	@Test	
@@ -41,7 +41,7 @@ public class BarTeste {
 	@Test
 	public void testeRetornaPercentualSocio()
 	{		
-		assertEquals(33.33,oBar.GetPercentualCliente("SOCIO"),1);	
+		assertEquals(33.33,oBar.retornaPercentualClienteNoBar("SOCIO"),1);	
 	}
 	
 	@Test
@@ -78,7 +78,7 @@ public class BarTeste {
 	public void testaSaidaCliente()
 	{
 		assertEquals(3,oBar.RetornaTotalPessoasNoBar());
-		oBar.RegistraSaidaCliente("477.119.570-68");
+		oBar.RegistraSaidaEntradaCliente("477.119.570-68",true);
 		assertEquals(2,oBar.RetornaTotalPessoasNoBar());
 	}
 }

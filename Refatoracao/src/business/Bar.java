@@ -19,7 +19,10 @@ public class Bar
 	{
 	   return oGerenciadorListaCliente.RetornaPessoaCPF(sCpf);
 	}
-	
+	public boolean RetornaPessoaCadastrada(String sCpf)
+	{
+	  return oGerenciadorListaCliente.RetornaPessoaCadastrada(sCpf);
+	}
 	public int RetornaTotalPessoasCadastradas()
 	{
 		return oGerenciadorListaCliente.RetornaPessoasTotal(false);
@@ -28,23 +31,38 @@ public class Bar
 	{
 	  return oGerenciadorListaCliente.RetornaPessoasTotal(true);
 	}
-	public double GetPercentualCliente(String sParametro)
+	public double retornaPercentualClienteNoBar(String sParametro)
 	{ 
 	   int iRetorno = 0; 
 	   double iTamanhoTotal = oGerenciadorListaCliente.RetornaPessoasTotal(true);
 	  
 	   switch(sParametro)		
 	   {
-	      case "SOCIO"     : iRetorno = oGerenciadorListaCliente.RetornaQuantidaDefinida(1,' '); break;
-	      case "M"         : iRetorno = oGerenciadorListaCliente.RetornaQuantidaDefinida(2,'M'); break;
-	      case "F"         : iRetorno = oGerenciadorListaCliente.RetornaQuantidaDefinida(2,'F'); break;
+	      case "SOCIO"     : iRetorno = oGerenciadorListaCliente.RetornaQuantidaDefinidaNoBar(1,' '); break;
+	      case "M"         : iRetorno = oGerenciadorListaCliente.RetornaQuantidaDefinidaNoBar(2,'M'); break;
+	      case "F"         : iRetorno = oGerenciadorListaCliente.RetornaQuantidaDefinidaNoBar(2,'F'); break;
 	      default          : break;
 	   }
 	   return (iRetorno/iTamanhoTotal)*100;
 	}
-	
-	public void RegistraSaidaCliente(String sCpf)
+
+	 public double retornaPercentualClienteTotal(String sParametro)
+	  { 
+	     int iRetorno = 0; 
+	     double iTamanhoTotal = oGerenciadorListaCliente.RetornaPessoasTotal(true);
+	    
+	     switch(sParametro)   
+	     {
+	        case "SOCIO"     : iRetorno = oGerenciadorListaCliente.RetornaQuantidaDefinidaTotal(1,' '); break;
+	        case "M"         : iRetorno = oGerenciadorListaCliente.RetornaQuantidaDefinidaTotal(2,'M'); break;
+	        case "F"         : iRetorno = oGerenciadorListaCliente.RetornaQuantidaDefinidaTotal(2,'F'); break;
+	        default          : break;
+	     }
+	     return (iRetorno/iTamanhoTotal)*100;
+	  }
+	 
+	public void RegistraSaidaEntradaCliente(String sCpf, boolean bSaiu)
 	{
-		oGerenciadorListaCliente.RegistraSaidaCliente(sCpf);
+		oGerenciadorListaCliente.RegistraSaidaEntradaCliente(sCpf, bSaiu);
 	}
 }
