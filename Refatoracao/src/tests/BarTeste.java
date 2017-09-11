@@ -84,10 +84,23 @@ public class BarTeste {
 	}
 	
 	@Test
-	public void TestaFluxo()
+	public void TestaFluxoNoBar()
 	{  
-    oBar.RegistraSaidaEntradaCliente("384.490.360-70", true);
-    assertEquals(50,oBar.retornaPercentualClienteNoBar("M"),1);
-    System.out.println(oBar.GeraRelatorioPresenteNoBar());
+    //Total 6 Pessoas 5H e 2M dando um percentual 71,42% de H e 28,57% de M 
+    oBar.AdicionaCliente("Fulano", "384.490.360-71", 'M', 22, false, "");
+    oBar.AdicionaCliente("Fulano", "384.490.360-71", 'M', 22, false, "");
+		oBar.AdicionaCliente("Nome", "477.119.570-62", 'M', 22,   false, "");
+		oBar.AdicionaCliente("Teste", "934.828.380-43", 'F', 22,  false, "");
+    
+    //Teste de Percentual de H
+    assertEquals(74.41,oBar.retornaPercentualClienteNoBar("M"),1);
+    
+    //Teste de Percentual de M
+    assertEquals(28,57,oBar.retornaPercentualClienteNoBar("M"),1);
+    
+    //Teste de percentualde socios
+    assertEquals(14,28,oBar.retornaPercentualClienteNoBar("M"),1);
+    
+    
 	}
 }
