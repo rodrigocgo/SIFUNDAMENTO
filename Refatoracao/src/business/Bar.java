@@ -49,7 +49,7 @@ public class Bar
 	 public double retornaPercentualClienteTotal(String sParametro)
 	  { 
 	     int iRetorno = 0; 
-	     double iTamanhoTotal = oGerenciadorListaCliente.RetornaPessoasTotal(true);
+	     double iTamanhoTotal = oGerenciadorListaCliente.RetornaPessoasTotal(false);
 	    
 	     switch(sParametro)   
 	     {
@@ -64,5 +64,15 @@ public class Bar
 	public void RegistraSaidaEntradaCliente(String sCpf, boolean bSaiu)
 	{
 		oGerenciadorListaCliente.RegistraSaidaEntradaCliente(sCpf, bSaiu);
+	}
+	
+	public String GeraRelatorio()
+	{
+	   return oGerenciadorListaCliente.GeraRelatorio();
+	}
+	
+	public String GeraRelatorioPresenteNoBar()
+	{
+	  return oGerenciadorListaCliente.GeraRelatorioPresenteNoBar();
 	}
 }

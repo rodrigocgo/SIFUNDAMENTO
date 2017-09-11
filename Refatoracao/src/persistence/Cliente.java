@@ -6,20 +6,11 @@ public class Cliente
 	char cGenero;
 	boolean bSocio;
 	int iIdade;
-	String sNumeroSocio;
-	boolean bSaiu; 
+	String sNumeroSocio; 
 	
 	public Cliente()
 	{
 		
-	}
-	public boolean getSaiu() 
-	{
-		return bSaiu;
-	}
-	public void setSaiu(boolean bSaiu) 
-	{
-		this.bSaiu = bSaiu;
 	}
 	public Cliente(String sNome,String sCPF,char cGenero,int iIdade, boolean bSocio,String sNumeroSocio)
 	{
@@ -29,7 +20,6 @@ public class Cliente
 	  this.iIdade = iIdade;
 	  this.bSocio = bSocio;
 	  this.sNumeroSocio = sNumeroSocio;
-	  this.bSaiu = false;
 	}
 	public void setNumeroSocio(String sNumeroSocio)
 	{
@@ -79,4 +69,9 @@ public class Cliente
 	{
 		this.iIdade = iIdade;
 	} 
+	
+	public String toString()
+	{
+	  return "Nome [" + sNome +"]" + "Cpf [" + sCPF  + "]" + "Genero [" + String.format("%s",cGenero) +"]";
+	}
 }

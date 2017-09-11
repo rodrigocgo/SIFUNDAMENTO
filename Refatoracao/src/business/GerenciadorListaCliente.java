@@ -5,21 +5,23 @@ import persistence.Cliente;
 
 public class GerenciadorListaCliente 
 {
-	private ArrayList<Cliente> listaCliente;
+	private ArrayList<Cliente> listaClienteTotal;
+	private ArrayList<Cliente> listaClienteNoBar;
 	
 	public GerenciadorListaCliente()
 	{
-	   listaCliente = new ArrayList<Cliente>();	
+	  listaClienteTotal = new ArrayList<Cliente>();	
+	  listaClienteNoBar = new ArrayList<Cliente>();  
 	}
 
 	private void VerificaCPFeNumeroSocio(String sCPF, String sNumeroSocio, boolean bSocio)
 	{
-		for(int i = 0;  i < listaCliente.size(); i++)
+		for(int i = 0;  i < listaClienteTotal.size(); i++)
 		{
-		   if (listaCliente.get(i).getCPF().equals(sCPF)) 
+		   if (listaClienteTotal.get(i).getCPF().equals(sCPF)) 
 		     throw new IllegalArgumentException("CPF JA CADASTRADO");
 		  
-		   if (listaCliente.get(i).getNumeroSocio().equals(sNumeroSocio)  && listaCliente.get(i).getNumeroSocio().length() > 0)
+		   if (listaClienteTotal.get(i).getNumeroSocio().equals(sNumeroSocio)  && listaClienteTotal.get(i).getNumeroSocio().length() > 0)
 		     throw new IllegalArgumentException("NUMERO SOCIO JA CADASTRADO");
 		   
 			if (bSocio == true && sNumeroSocio.length() == 0) 
@@ -33,16 +35,17 @@ public class GerenciadorListaCliente
 		
 		oCliente = new Cliente(sNome,sCPF,cGenero,iIdade, bSocio,sNumeroSocio);
 		
-		listaCliente.add(oCliente);
+		listaClienteTotal.add(oCliente);
+		listaClienteNoBar.add(oCliente);
 	}
 	
 	public boolean ClienteNoBarCPF(String sCPF)
 	{
 		boolean bAux = false;
 		
-		for(int i = 0;  i < RetornaTotalPessoasNoBar(); i++)
+		for(int i = 0;  i < listaClienteNoBar.size(); i++)
 		{
-		   if (listaCliente.get(i).getCPF().equals(sCPF)) 
+		   if (listaClienteNoBar.get(i).getCPF().equals(sCPF)) 
 			  bAux = true;
 		}
 		
@@ -56,7 +59,7 @@ public class GerenciadorListaCliente
 	
 	private int RetornaTotalPessoasCadastradas()
 	{
-	   return listaCliente.size();	
+	   return listaClienteTotal.size();	
 	}
 	public int RetornaQuantidaDefinidaNoBar(int iParametroDeEscolha,char cGenero)
 	{
@@ -69,14 +72,7 @@ public class GerenciadorListaCliente
 	}
 	private int RetornaTotalPessoasNoBar()
 	{
-	  int iContador = 0;
-	  for(int i = 0; i < listaCliente.size();i++)
-	  {
-	    if (listaCliente.get(i).getSaiu() == false)
-	      iContador++;
-	  }
-	  
-	  return iContador;
+	  return listaClienteNoBar.size();
 	}
 	
 	public int RetornaQuantidaDefinidaTotal(int iParametroDeEscolha,char cGenero)
@@ -88,23 +84,13 @@ public class GerenciadorListaCliente
       default:  return 0;
     }
   }	
-	public boolean RetornaPessoaCadastrada(String sCpf)
-	{
-	  boolean bEsta = false;
-	  
-	  for(int i = 0; i < listaCliente.size(); i++)
-	    if (listaCliente.get(i).getCPF().equals(sCpf) == true)
-	      bEsta = true;
-	  
-	  return bEsta;
-	}
 	
 	public boolean RetornaPessoaCPF(String sCpf)
 	{
     boolean bEsta = false;
     
-    for(int i = 0;  i < RetornaTotalPessoasNoBar(); i++)
-	    if (listaCliente.get(i).getCPF().equals(sCpf) == true && listaCliente.get(i).getSaiu() == false) 
+    for(int i = 0;  i < listaClienteTotal.size(); i++)
+	    if (listaClienteTotal.get(i).getCPF().equals(sCpf) == true) 
 		    bEsta = true;		
 	  
     return bEsta;
@@ -114,9 +100,9 @@ public class GerenciadorListaCliente
 	{
     int iContador = 0; 
 	  
-    for(int i = 0;  i < RetornaTotalPessoasNoBar(); i++)
+    for(int i = 0;  i < listaClienteNoBar.size(); i++)
 	  {
-		  if (listaCliente.get(i).getGenero() == cString) 
+		  if (listaClienteNoBar.get(i).getGenero() == cString) 
 			  iContador++;
 	  }
 	   
@@ -127,22 +113,30 @@ public class GerenciadorListaCliente
   {
     int iContador = 0; 
     
-    for(int i = 0;  i < listaCliente.size(); i++)
+    for(int i = 0;  i < listaClienteTotal.size(); i++)
     {
-      if (listaCliente.get(i).getGenero() == cString) 
+      if (listaClienteTotal.get(i).getGenero() == cString) 
         iContador++;
     }
      
     return iContador; 
   }
-	
+	public boolean RetornaPessoaCadastrada(String sCpf)
+	{
+	  for (int  i = 0; i < listaClienteTotal.size(); i++)
+	  {
+	    if (listaClienteTotal.get(i).getCPF().equals(sCpf) == true)
+	      return true;
+	  }
+	   return false;
+	}
 	private int RetornaTotalSocioNoBar()
 	{
 		int iContador = 0; 
 		   
-	  for(int i = 0;  i < RetornaTotalPessoasNoBar() ; i++)
+	  for(int i = 0;  i < listaClienteNoBar.size() ; i++)
 		{
-	    if (listaCliente.get(i).getSocio() == true) 
+	    if (listaClienteNoBar.get(i).getSocio() == true) 
 		    iContador++;
 		}  
 	  return iContador; 
@@ -152,22 +146,68 @@ public class GerenciadorListaCliente
   {
     int iContador = 0; 
        
-    for(int i = 0;  i < listaCliente.size() ; i++)
+    for(int i = 0;  i < listaClienteTotal.size() ; i++)
     {
-      if (listaCliente.get(i).getSocio() == true) 
+      if (listaClienteTotal.get(i).getSocio() == true) 
         iContador++;
     }  
     return iContador; 
   }
 	
-	public void RegistraSaidaEntradaCliente(String sCpf, boolean bSaiu)
+	public int RegistraSaidaEntradaCliente(String sCpf, boolean bSaiu)
 	{
-		for(int i = 0;  i < listaCliente.size(); i++)
+		if (bSaiu == true)
 		{
-	    if (listaCliente.get(i).getCPF().equals(sCpf) && bSaiu == true) 
-	      listaCliente.get(i).setSaiu(true);
-	    else if (listaCliente.get(i).getCPF().equals(sCpf) && bSaiu == false)
-	      listaCliente.get(i).setSaiu(false);
-		}
+		  for(int i = 0; i < listaClienteNoBar.size(); i++) 
+		  {
+		    if (listaClienteNoBar.get(i).getCPF().equals(sCpf) == true)
+		    {
+		      listaClienteNoBar.remove(i);
+		      return 0;
+		    }
+		  }
+		 }
+		  else
+		  {
+		    for(int i = 0; i < listaClienteTotal.size(); i++)
+		    {
+		      if (listaClienteTotal.get(i).getCPF().equals(sCpf) == true)
+		      {
+		        boolean bAchou = false;
+		        for (int j = 0; j < listaClienteNoBar.size(); j++)
+		        {
+		            if (listaClienteNoBar.get(j).getCPF().equals(sCpf) == true)
+		            bAchou = true;
+		        }
+		        if (!bAchou)
+		        {
+		          listaClienteNoBar.add(listaClienteTotal.get(i));
+		          return 0;
+		        }
+		        
+		      }
+		    }
+		  }
+		return 1;
+	}
+	
+	public String GeraRelatorio()
+	{
+	  String sRetorno = "";
+	  
+	  for (int i = 0; i < listaClienteTotal.size(); i++)
+	    sRetorno += listaClienteTotal.get(i).toString() + "\n";
+	  
+	  return sRetorno;
+	}
+	
+	public String GeraRelatorioPresenteNoBar()
+	{
+	  String sRetorno ="";
+	  
+	  for (int i = 0; i < listaClienteNoBar.size();i++)
+	      sRetorno += listaClienteNoBar.get(i).toString() + "\n";
+	  
+	  return sRetorno;
 	}
 }

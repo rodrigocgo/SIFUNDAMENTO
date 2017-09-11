@@ -53,6 +53,13 @@ public class MainForm
   /**
    * Initialize the contents of the frame.
    */
+  private void ChamaTelaRelatorio()
+  {
+    DialogRelatorio dlgRelatorio = new DialogRelatorio();
+    dlgRelatorio.ReferenciaObjetoBar(oBar);
+    dlgRelatorio.setVisible(true);
+  }
+  
   private void ChamaTelaCadastro()
   {
     DialogCadastro dlgCadastro = new DialogCadastro();
@@ -150,6 +157,8 @@ public class MainForm
     frame.getContentPane().add(btnRegistra);
     
     JButton btnImprimirRelatorio = new JButton("F4 -Relatorio");
+    
+    
     springLayout.putConstraint(SpringLayout.NORTH, btnImprimirRelatorio, 18, SpringLayout.SOUTH, btnRegistra);
     springLayout.putConstraint(SpringLayout.WEST, btnImprimirRelatorio, 0, SpringLayout.WEST, lblTitulo);
     springLayout.putConstraint(SpringLayout.EAST, btnImprimirRelatorio, 0, SpringLayout.EAST, btnFConsulta);
@@ -218,6 +227,12 @@ public class MainForm
       }
     });
     
+    btnImprimirRelatorio.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+        
+        ChamaTelaRelatorio();
+      }
+    });
    
   }
 }

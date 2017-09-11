@@ -16,8 +16,9 @@ public class BarTeste {
 		 oBar = new Bar();
 		
 		 oBar.AdicionaCliente("Fulano", "384.490.360-70", 'M', 22, false, "");
-	   oBar.AdicionaCliente("Teste", "934.828.380-46", 'F', 22, false, "");
-	   oBar.AdicionaCliente("Nome", "477.119.570-68", 'M', 22, true, "11");
+		 oBar.AdicionaCliente("Nome", "477.119.570-68", 'M', 22, true, "11");
+		 oBar.AdicionaCliente("Teste", "934.828.380-46", 'F', 22, false, "");
+	  
 	    
 	}
 	@Test
@@ -80,5 +81,13 @@ public class BarTeste {
 		assertEquals(3,oBar.RetornaTotalPessoasNoBar());
 		oBar.RegistraSaidaEntradaCliente("477.119.570-68",true);
 		assertEquals(2,oBar.RetornaTotalPessoasNoBar());
+	}
+	
+	@Test
+	public void TestaFluxo()
+	{  
+    oBar.RegistraSaidaEntradaCliente("384.490.360-70", true);
+    assertEquals(50,oBar.retornaPercentualClienteNoBar("M"),1);
+    System.out.println(oBar.GeraRelatorioPresenteNoBar());
 	}
 }
