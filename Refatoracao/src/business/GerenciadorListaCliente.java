@@ -85,17 +85,6 @@ public class GerenciadorListaCliente
     }
   }	
 	
-	public boolean RetornaPessoaCPF(String sCpf)
-	{
-    boolean bEsta = false;
-    
-    for(int i = 0;  i < listaClienteTotal.size(); i++)
-	    if (listaClienteTotal.get(i).getCPF().equals(sCpf) == true) 
-		    bEsta = true;		
-	  
-    return bEsta;
-	}
-	
 	private int RetornaTotalGeneroNoBar(char cString)
 	{
     int iContador = 0; 
@@ -121,6 +110,7 @@ public class GerenciadorListaCliente
      
     return iContador; 
   }
+	
 	public boolean RetornaPessoaCadastrada(String sCpf)
 	{
 	  for (int  i = 0; i < listaClienteTotal.size(); i++)
@@ -130,6 +120,7 @@ public class GerenciadorListaCliente
 	  }
 	   return false;
 	}
+	
 	private int RetornaTotalSocioNoBar()
 	{
 		int iContador = 0; 
@@ -144,14 +135,14 @@ public class GerenciadorListaCliente
 	
 	private int RetornaTotalSocio()
   {
-    int iContador = 0; 
+     int iContador = 0; 
        
-    for(int i = 0;  i < listaClienteTotal.size() ; i++)
-    {
-      if (listaClienteTotal.get(i).getSocio() == true) 
-        iContador++;
-    }  
-    return iContador; 
+     for(int i = 0;  i < listaClienteTotal.size() ; i++)
+     {
+        if (listaClienteTotal.get(i).getSocio() == true) 
+          iContador++;
+     }  
+     return iContador; 
   }
 	
 	public int RegistraSaidaEntradaCliente(String sCpf, boolean bSaiu)
@@ -193,7 +184,8 @@ public class GerenciadorListaCliente
 	
 	public String GeraRelatorio()
 	{
-	  String sRetorno = "";
+		
+		String sRetorno = "";
 	  
 	  for (int i = 0; i < listaClienteTotal.size(); i++)
 	    sRetorno += listaClienteTotal.get(i).toString() + "\n";
@@ -203,11 +195,11 @@ public class GerenciadorListaCliente
 	
 	public String GeraRelatorioPresenteNoBar()
 	{
-	  String sRetorno ="";
+	    String sRetorno ="";
 	  
-	  for (int i = 0; i < listaClienteNoBar.size();i++)
-	      sRetorno += listaClienteNoBar.get(i).toString() + "\n";
+	    for (int i = 0; i < listaClienteNoBar.size();i++)
+	        sRetorno += listaClienteNoBar.get(i).toString() + "\n";
 	  
-	  return sRetorno;
+	    return sRetorno;
 	}
 }

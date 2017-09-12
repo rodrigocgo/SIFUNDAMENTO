@@ -90,8 +90,6 @@ public class MainForm
   
   private void ControlaAtalho(KeyEvent e)
   {
-    
-    
     if (e.getKeyCode() == KeyEvent.VK_F1)
     {
       ChamaTelaCadastro();

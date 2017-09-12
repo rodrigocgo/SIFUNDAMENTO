@@ -2,6 +2,7 @@ package uinterface;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JFileChooser;
 import javax.swing.JPanel;
 import business.Bar;
 import javax.swing.JLabel;
@@ -13,6 +14,10 @@ import java.awt.SystemColor;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 
 public class DialogRelatorio extends JDialog
@@ -62,7 +67,7 @@ public class DialogRelatorio extends JDialog
       sRetorno = String.format("%.2f", oBar.retornaPercentualClienteNoBar("SOCIO"));
     }
     else 
-      return "Filtro Inválido";
+      return "Filtro Invï¿½lido";
     
     if (sRetorno.equals("NaN") == true)
       return "Cadastro Vazio!";
@@ -99,6 +104,7 @@ public class DialogRelatorio extends JDialog
     iSexo =  0;
     bSocio = false;
     bTotal = false;
+    
     
     JLabel lblPercentual = new JLabel("PERCENTUAL");
     lblPercentual.setHorizontalAlignment(SwingConstants.CENTER);
@@ -195,9 +201,36 @@ public class DialogRelatorio extends JDialog
     chckbxPresenteNoBar.setBounds(6, 113, 117, 23);
     getContentPane().add(chckbxPresenteNoBar);
     
-    JButton bntImprimirRelatorio = new JButton("Salvar");
+    JButton bntImprimirRelatorio = new JButton("Salvar"); 
     bntImprimirRelatorio.setBounds(103, 156, 80, 23);
     getContentPane().add(bntImprimirRelatorio);
+    bntImprimirRelatorio.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) 
+        {
+        	JFileChooser fcPath = new JFileChooser();
+        	fcPath.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        	Integer iReturn = fcPath.showOpenDialog(bntImprimirRelatorio.getParent());  
+              
+        	if(iReturn  == JFileChooser.APPROVE_OPTION) 
+        	{
+        		BufferedWriter output = null;
+        		try 
+        		{
+        		   File fRelatorio = fcPath.getSelectedFile();
+        		   output = new BufferedWriter(new FileWriter(fRelatorio));
+        		   output.write(oBar.RelatorioCompleto());
+        		   output.close();
+        		 
+        		   
+        		} catch (IOException ex) 
+        		{
+        			
+        		}
+        	    
+        	}
+        }
+      });
+    
     
     JLabel lblSalvarRelatorio = new JLabel("Relat\u00F3rio Completo");
     lblSalvarRelatorio.setFont(new Font("Source Sans Pro", Font.BOLD, 11));

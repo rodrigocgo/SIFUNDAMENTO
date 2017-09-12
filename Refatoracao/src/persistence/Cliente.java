@@ -2,16 +2,12 @@ package persistence;
 
 public class Cliente
 {
-	String sNome, sCPF;
-	char cGenero;
-	boolean bSocio;
-	int iIdade;
-	String sNumeroSocio; 
+	private String sNome, sCPF;
+	private char cGenero;
+	private boolean bSocio;
+	private int iIdade;
+	private String sNumeroSocio; 
 	
-	public Cliente()
-	{
-		
-	}
 	public Cliente(String sNome,String sCPF,char cGenero,int iIdade, boolean bSocio,String sNumeroSocio)
 	{
 	  this.sNome = sNome;
@@ -72,6 +68,6 @@ public class Cliente
 	
 	public String toString()
 	{
-	  return "Nome [" + sNome +"]" + "Cpf [" + sCPF  + "]" + "Genero [" + String.format("%s",cGenero) +"]";
+	  return "Nome [" + sNome +"]" + " Cpf [" + sCPF  + "]" + " Genero [" + String.format("%s",cGenero) +"]" + " Idade [" + String.format("%d",iIdade) +"]";
 	}
 }
