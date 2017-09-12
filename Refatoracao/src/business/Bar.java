@@ -1,4 +1,7 @@
 package business;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 import persistence.Cliente;
 
 public class Bar
@@ -79,8 +82,9 @@ public class Bar
 	public String RelatorioCompleto()
 	{
 		String sRelatorioCompleto;
+		String sData = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime());
 		
-		sRelatorioCompleto ="Total Cadastrado =["+RetornaTotalPessoasCadastradas()+"]\nTotal no Bar =["+RetornaTotalPessoasNoBar()+"]\n\n[PERCENTUAIS]\nPercentual Socio no Bar =["+String.format("%.2f",retornaPercentualClienteNoBar("SOCIO"))+"%]\nPercentual Homem no Bar=["+String.format("%.2f",retornaPercentualClienteNoBar("M"))+"%]\nPercentual Mulher no Bar=["+String.format("%.2f",retornaPercentualClienteNoBar("F"))+"%]\nPercentual Socio Cadastrado =["+String.format("%.2f",retornaPercentualClienteTotal("SOCIO"))+"%]\nRetorna Percentual Homens Cadastrado =["+String.format("%.2f",retornaPercentualClienteTotal("M"))+"%]\nPercentual Mulher Cadastrado =["+String.format("%.2f",retornaPercentualClienteTotal("F"))+"%]\n\n[Clientes Cadastrados]\n"+GeraRelatorio()+"\n\n[Clientes no Bar]\n"+GeraRelatorioPresenteNoBar()+"\n";	
+		sRelatorioCompleto ="["+sData + "]\n\n"+"Total Cadastrado =["+RetornaTotalPessoasCadastradas()+"]\nTotal no Bar =["+RetornaTotalPessoasNoBar()+"]\n\n[PERCENTUAIS]\nPercentual Socio no Bar =["+String.format("%.2f",retornaPercentualClienteNoBar("SOCIO"))+"%]\nPercentual Homem no Bar=["+String.format("%.2f",retornaPercentualClienteNoBar("M"))+"%]\nPercentual Mulher no Bar=["+String.format("%.2f",retornaPercentualClienteNoBar("F"))+"%]\nPercentual Socio Cadastrado =["+String.format("%.2f",retornaPercentualClienteTotal("SOCIO"))+"%]\nRetorna Percentual Homens Cadastrado =["+String.format("%.2f",retornaPercentualClienteTotal("M"))+"%]\nPercentual Mulher Cadastrado =["+String.format("%.2f",retornaPercentualClienteTotal("F"))+"%]\n\n[Clientes Cadastrados]\n"+GeraRelatorio()+"\n\n[Clientes no Bar]\n"+GeraRelatorioPresenteNoBar()+"\n";	
 		return sRelatorioCompleto; 
 	}
         

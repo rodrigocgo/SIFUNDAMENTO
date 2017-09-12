@@ -1,6 +1,5 @@
 package business;
 import java.util.ArrayList;
-
 import persistence.Cliente;
 
 public class GerenciadorListaCliente 
@@ -184,7 +183,6 @@ public class GerenciadorListaCliente
 	
 	public String GeraRelatorio()
 	{
-		
 		String sRetorno = "";
 	  
 	  for (int i = 0; i < listaClienteTotal.size(); i++)
