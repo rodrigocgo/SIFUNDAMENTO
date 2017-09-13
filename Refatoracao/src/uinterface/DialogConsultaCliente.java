@@ -17,6 +17,7 @@ import java.text.NumberFormat;
 import java.text.ParseException;
 import java.awt.event.ActionEvent;
 import javax.swing.JFormattedTextField;
+import java.awt.SystemColor;
 
 public class DialogConsultaCliente extends JDialog
 {
@@ -67,7 +68,7 @@ public class DialogConsultaCliente extends JDialog
   public DialogConsultaCliente() 
   {
     setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-    JLabel lblRetornoConsulta = new JLabel("New label");
+    JLabel lblRetornoConsulta = new JLabel("");
     
     try
     {
@@ -75,7 +76,7 @@ public class DialogConsultaCliente extends JDialog
     } 
     catch (ParseException e1)
     {
-      lblRetornoConsulta.setText("Parse inválido");
+      lblRetornoConsulta.setText("Parse invalido");
     }
     
     setResizable(false);
@@ -87,6 +88,7 @@ public class DialogConsultaCliente extends JDialog
     setModal(true);
     
     JPanel pnlRetorno = new JPanel();
+    pnlRetorno.setBackground(SystemColor.menu);
     pnlRetorno.setBounds(0, 174, 321, 68);
     contentPanel.add(pnlRetorno);
     pnlRetorno.setLayout(null);
@@ -95,7 +97,7 @@ public class DialogConsultaCliente extends JDialog
     lblRetornoConsulta.setBounds(0, 0, 321, 68);
     pnlRetorno.add(lblRetornoConsulta);
     lblRetornoConsulta.setBackground(Color.WHITE);
-    lblRetornoConsulta.setForeground(Color.WHITE);
+    lblRetornoConsulta.setForeground(SystemColor.menu);
     lblRetornoConsulta.setFont(new Font("Source Sans Pro", Font.BOLD, 16));
     lblRetornoConsulta.setHorizontalAlignment(SwingConstants.CENTER);
     
@@ -133,7 +135,7 @@ public class DialogConsultaCliente extends JDialog
              break;
              
              case 3:
-               lblRetornoConsulta.setText("CLIENTE NÃO ENCONTRADO");
+               lblRetornoConsulta.setText("CLIENTE NAO ENCONTRADO");
                pnlRetorno.setBackground(Color.red);
              break;  
            } 
@@ -159,7 +161,7 @@ public class DialogConsultaCliente extends JDialog
     
     JLabel lblEntraCpf = new JLabel("Digite o CPF");
     lblEntraCpf.setFont(new Font("Source Sans Pro", Font.BOLD, 13));
-    lblEntraCpf.setBounds(10, 23, 74, 20);
+    lblEntraCpf.setBounds(10, 23, 93, 20);
     contentPanel.add(lblEntraCpf);
     
  

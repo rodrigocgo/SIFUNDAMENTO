@@ -30,7 +30,6 @@ public class DialogRelatorio extends JDialog
   private Bar oBar;
   private int iSexo;
   private boolean bSocio;
-  private boolean bTotal;
   
   
   public void ReferenciaObjetoBar(Bar oBar)
@@ -42,32 +41,20 @@ public class DialogRelatorio extends JDialog
   {
     String sRetorno = null;
     
-    if (iSexo == 1 && bTotal == true)
-    {  
-      sRetorno = String.format("%.2f", oBar.retornaPercentualClienteTotal("M"));
-    }
-    else if(iSexo == 2 && bTotal == true)
-    {
-      sRetorno = String.format("%.2f", oBar.retornaPercentualClienteTotal("F"));
-    }
-    else if (iSexo == 0 && bSocio == true && bTotal == true)
-    {
-      sRetorno = String.format("%.2f", oBar.retornaPercentualClienteTotal("SOCIO"));
-    }
-    else if (iSexo == 1 && bTotal == false)
+    if (iSexo == 1)
     {   
       sRetorno = String.format("%.2f", oBar.retornaPercentualClienteNoBar("M"));    
     }
-    else if (iSexo == 2 && bTotal == false)
+    else if (iSexo == 2)
     {
       sRetorno = String.format("%.2f", oBar.retornaPercentualClienteNoBar("F"));
     }
-    else if (iSexo == 0 && bSocio == true && bTotal == false)
+    else if (iSexo == 0 && bSocio == true)
     {
       sRetorno = String.format("%.2f", oBar.retornaPercentualClienteNoBar("SOCIO"));
     }
     else 
-      return "Filtro Inv�lido";
+      return "Filtro Invalido";
     
     if (sRetorno.equals("NaN") == true)
       return "Cadastro Vazio!";
@@ -99,17 +86,16 @@ public class DialogRelatorio extends JDialog
   {
     setModal(true);
     setTitle("Relat\u00F3rio");
-    setBounds(100, 100, 226, 267);
+    setBounds(100, 100, 262, 309);
     getContentPane().setLayout(null);
     iSexo =  0;
     bSocio = false;
-    bTotal = false;
     
     
     JLabel lblPercentual = new JLabel("PERCENTUAL");
     lblPercentual.setHorizontalAlignment(SwingConstants.CENTER);
     lblPercentual.setFont(new Font("Source Sans Pro", Font.BOLD, 13));
-    lblPercentual.setBounds(6, 0, 204, 43);
+    lblPercentual.setBounds(6, 0, 240, 43);
     getContentPane().add(lblPercentual);
     JCheckBox chckbxF = new JCheckBox("F");
     JCheckBox chckbxM = new JCheckBox("M");
@@ -152,12 +138,12 @@ public class DialogRelatorio extends JDialog
     });
     chckbxM.setFont(new Font("Source Sans Pro", Font.BOLD, 11));
     chckbxM.setSelected(true);
-    chckbxM.setBounds(6, 64, 33, 23);
+    chckbxM.setBounds(6, 64, 38, 23);
     getContentPane().add(chckbxM);
     
    
     chckbxF.setFont(new Font("Source Sans Pro", Font.BOLD, 11));
-    chckbxF.setBounds(41, 64, 33, 23);
+    chckbxF.setBounds(46, 64, 33, 23);
     getContentPane().add(chckbxF);
     
     JLabel lblFiltros = new JLabel("FILTROS");
@@ -184,25 +170,11 @@ public class DialogRelatorio extends JDialog
       }
     });
     chckbxSocio.setFont(new Font("Source Sans Pro", Font.BOLD, 11));
-    chckbxSocio.setBounds(6, 90, 97, 23);
+    chckbxSocio.setBounds(6, 105, 97, 23);
     getContentPane().add(chckbxSocio);
     
-    JCheckBox chckbxPresenteNoBar = new JCheckBox("Presente No Bar");
-    chckbxPresenteNoBar.addChangeListener(new ChangeListener() {
-      public void stateChanged(ChangeEvent e) {
-        
-        if (chckbxPresenteNoBar.isSelected() == true)
-          bTotal = false;
-        else 
-          bTotal = true;
-      }
-    });
-    chckbxPresenteNoBar.setFont(new Font("Source Sans Pro", Font.BOLD, 11));
-    chckbxPresenteNoBar.setBounds(6, 113, 117, 23);
-    getContentPane().add(chckbxPresenteNoBar);
-    
     JButton bntImprimirRelatorio = new JButton("Salvar"); 
-    bntImprimirRelatorio.setBounds(103, 156, 80, 23);
+    bntImprimirRelatorio.setBounds(139, 156, 80, 23);
     getContentPane().add(bntImprimirRelatorio);
     bntImprimirRelatorio.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) 
@@ -233,10 +205,11 @@ public class DialogRelatorio extends JDialog
     
     
     JLabel lblSalvarRelatorio = new JLabel("Relat\u00F3rio Completo");
+    lblSalvarRelatorio.setHorizontalAlignment(SwingConstants.CENTER);
     lblSalvarRelatorio.setFont(new Font("Source Sans Pro", Font.BOLD, 11));
-    lblSalvarRelatorio.setBounds(103, 143, 97, 14);
+    lblSalvarRelatorio.setBounds(104, 142, 142, 14);
     getContentPane().add(lblSalvarRelatorio);
-    JLabel lblPercent = new JLabel("New label");
+    JLabel lblPercent = new JLabel("");
     JButton btnGerar = new JButton("Gerar");
    
     btnGerar.addActionListener(new ActionListener() {
@@ -251,16 +224,16 @@ public class DialogRelatorio extends JDialog
     
     JPanel pnlStatus = new JPanel();
     pnlStatus.setBackground(SystemColor.menu);
-    pnlStatus.setBounds(0, 194, 210, 43);
+    pnlStatus.setBounds(0, 194, 246, 76);
     getContentPane().add(pnlStatus);
     pnlStatus.setLayout(null);
     
     
-    lblPercent.setBackground(Color.WHITE);
+    lblPercent.setBackground(SystemColor.menu);
     lblPercent.setForeground(SystemColor.menu);
     lblPercent.setFont(new Font("Source Sans Pro", Font.BOLD, 14));
     lblPercent.setHorizontalAlignment(SwingConstants.CENTER);
-    lblPercent.setBounds(0, 0, 210, 32);
+    lblPercent.setBounds(0, 0, 244, 73);
     pnlStatus.add(lblPercent);
   }
 }

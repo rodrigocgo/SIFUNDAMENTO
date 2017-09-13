@@ -25,6 +25,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
+import java.awt.SystemColor;
 
 public class DialogEntradaSaida extends JDialog
 {
@@ -129,15 +130,16 @@ public class DialogEntradaSaida extends JDialog
     rdbtnSaiu.setBounds(72, 101, 109, 23);
     contentPanel.add(rdbtnSaiu);
     
-    JLabel lblAviso = new JLabel("New label");
-    lblAviso.setForeground(Color.WHITE);
+    JLabel lblAviso = new JLabel("");
+    lblAviso.setBackground(SystemColor.menu);
+    lblAviso.setForeground(SystemColor.menu);
     lblAviso.setHorizontalAlignment(SwingConstants.CENTER);
     lblAviso.setFont(new Font("Source Sans Pro Black", Font.BOLD, 13));
-    lblAviso.setBounds(0, 179, 253, 21);
+    lblAviso.setBounds(0, 179, 298, 41);
     contentPanel.add(lblAviso);
     
     setTitle("Registra Entrada Saida");
-    setBounds(100, 100, 269, 239);
+    setBounds(100, 100, 314, 259);
     getContentPane().setLayout(new BorderLayout());
     contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
     getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -172,7 +174,7 @@ public class DialogEntradaSaida extends JDialog
              dispose();
            case 3: 
              lblAviso.setForeground(Color.RED);
-             lblAviso.setText("CLIENTE NÃO CADASTRADO");
+             lblAviso.setText("CLIENTE NAO CADASTRADO");
            return;
              
          }

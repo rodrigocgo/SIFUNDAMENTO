@@ -99,7 +99,7 @@ public class DialogCadastro extends JDialog
     catch (ParseException e1)
     {
       lblAviso.setForeground(Color.red);
-      lblAviso.setText("Parse inválido");
+      lblAviso.setText("Parse invalido");
     }
   
     setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
@@ -179,7 +179,7 @@ public class DialogCadastro extends JDialog
             return;
           case 4:
             lblAviso.setForeground(Color.red);
-            lblAviso.setText("Campo CÓDIGO SÓCIO Vazio!");
+            lblAviso.setText("Campo CODIGO SOCIO Vazio!");
             return;
         }
         
@@ -221,7 +221,7 @@ public class DialogCadastro extends JDialog
     lblNumeroSocio.setVisible(false);
     ftxtEntraCodigo.setVisible(false);
     
-    setBounds(100, 100, 269, 450);
+    setBounds(100, 100, 304, 473);
     getContentPane().setLayout(new BorderLayout());
     contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
     getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -261,12 +261,12 @@ public class DialogCadastro extends JDialog
     
     rdbtnM.setFont(new Font("Source Sans Pro", Font.BOLD, 11));
     rdbtnM.setSelected(true);
-    rdbtnM.setBounds(10, 195, 33, 23);
+    rdbtnM.setBounds(10, 195, 42, 23);
     contentPanel.add(rdbtnM);
     
     
     rdbtnF.setFont(new Font("Source Sans Pro", Font.BOLD, 11));
-    rdbtnF.setBounds(45, 195, 33, 23);
+    rdbtnF.setBounds(70, 195, 33, 23);
     contentPanel.add(rdbtnF);
     
     

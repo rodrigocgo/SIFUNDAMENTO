@@ -68,6 +68,6 @@ public class Cliente
 	
 	public String toString()
 	{
-	  return "Nome [" + sNome +"]" + " Cpf [" + sCPF  + "]" + " Genero [" + String.format("%s",cGenero) +"]" + " Idade [" + String.format("%d",iIdade) +"]";
+	  return "Nome [" + sNome +"]" + " Cpf [" + sCPF  + "]" + " Genero [" + String.format("%s",cGenero) +"]" + " Idade [" + String.format("%d",iIdade) +"] Numero Socio ["+ sNumeroSocio+"]";
 	}
 }

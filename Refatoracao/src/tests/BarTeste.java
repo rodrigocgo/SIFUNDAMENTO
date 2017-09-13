@@ -111,9 +111,5 @@ public class BarTeste {
        
 	}
 	
-	@Test 
-	public void TestaQuantidadeSocioFluxo()
-	{
-		
-	}
+	
 }
