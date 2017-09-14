@@ -147,7 +147,7 @@ public class DialogEntradaSaida extends JDialog
     {
       JLabel lblEntraCpf = new JLabel("Digite o CPF");
       lblEntraCpf.setFont(new Font("Source Sans Pro", Font.BOLD, 13));
-      lblEntraCpf.setBounds(10, 43, 74, 20);
+      lblEntraCpf.setBounds(10, 43, 288, 20);
       contentPanel.add(lblEntraCpf);
     }
    

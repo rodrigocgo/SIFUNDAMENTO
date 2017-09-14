@@ -138,17 +138,17 @@ public class DialogRelatorio extends JDialog
     });
     chckbxM.setFont(new Font("Source Sans Pro", Font.BOLD, 11));
     chckbxM.setSelected(true);
-    chckbxM.setBounds(6, 64, 38, 23);
+    chckbxM.setBounds(6, 64, 62, 23);
     getContentPane().add(chckbxM);
     
    
     chckbxF.setFont(new Font("Source Sans Pro", Font.BOLD, 11));
-    chckbxF.setBounds(46, 64, 33, 23);
+    chckbxF.setBounds(70, 64, 33, 23);
     getContentPane().add(chckbxF);
     
     JLabel lblFiltros = new JLabel("FILTROS");
     lblFiltros.setFont(new Font("Source Sans Pro", Font.BOLD, 14));
-    lblFiltros.setBounds(10, 43, 64, 14);
+    lblFiltros.setBounds(10, 43, 226, 14);
     getContentPane().add(lblFiltros);
     
     
@@ -174,7 +174,7 @@ public class DialogRelatorio extends JDialog
     getContentPane().add(chckbxSocio);
     
     JButton bntImprimirRelatorio = new JButton("Salvar"); 
-    bntImprimirRelatorio.setBounds(139, 156, 80, 23);
+    bntImprimirRelatorio.setBounds(122, 156, 97, 23);
     getContentPane().add(bntImprimirRelatorio);
     bntImprimirRelatorio.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) 
@@ -219,7 +219,7 @@ public class DialogRelatorio extends JDialog
         lblPercent.setText(RetornaPercentFormatado());
       }
     });
-    btnGerar.setBounds(6, 156, 73, 23);
+    btnGerar.setBounds(6, 156, 97, 23);
     getContentPane().add(btnGerar);
     
     JPanel pnlStatus = new JPanel();

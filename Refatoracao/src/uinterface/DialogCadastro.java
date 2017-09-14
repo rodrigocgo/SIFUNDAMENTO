@@ -261,12 +261,12 @@ public class DialogCadastro extends JDialog
     
     rdbtnM.setFont(new Font("Source Sans Pro", Font.BOLD, 11));
     rdbtnM.setSelected(true);
-    rdbtnM.setBounds(10, 195, 42, 23);
+    rdbtnM.setBounds(10, 195, 60, 23);
     contentPanel.add(rdbtnM);
     
     
     rdbtnF.setFont(new Font("Source Sans Pro", Font.BOLD, 11));
-    rdbtnF.setBounds(70, 195, 33, 23);
+    rdbtnF.setBounds(79, 195, 33, 23);
     contentPanel.add(rdbtnF);
     
     
