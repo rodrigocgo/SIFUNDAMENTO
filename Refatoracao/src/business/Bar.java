@@ -3,6 +3,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import persistence.Cliente;
+import persistence.GerenciadorListaCliente;
 
 public class Bar
 {

@@ -1,6 +1,5 @@
-package business;
+package persistence;
 import java.util.ArrayList;
-import persistence.Cliente;
 
 public class GerenciadorListaCliente 
 {

@@ -122,12 +122,12 @@ public class DialogEntradaSaida extends JDialog
     });
    
     rdbtnEntrou.setFont(new Font("Source Sans Pro", Font.BOLD, 11));
-    rdbtnEntrou.setBounds(10, 101, 57, 23);
+    rdbtnEntrou.setBounds(10, 101, 93, 23);
     contentPanel.add(rdbtnEntrou);
     
     
     rdbtnSaiu.setFont(new Font("Source Sans Pro", Font.BOLD, 11));
-    rdbtnSaiu.setBounds(72, 101, 109, 23);
+    rdbtnSaiu.setBounds(127, 101, 109, 23);
     contentPanel.add(rdbtnSaiu);
     
     JLabel lblAviso = new JLabel("");

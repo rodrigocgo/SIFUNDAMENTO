@@ -18,7 +18,6 @@ public class BarTeste {
 		 oBar.AdicionaCliente("Joao", "384.490.360-70", 'M', 22, false, "");
 		 oBar.AdicionaCliente("Mario", "477.119.570-68", 'M', 22, true, "11");
 		 oBar.AdicionaCliente("Maria", "934.828.380-46", 'F', 22, false, "");
-	  
 	    
 	}
 	@Test
@@ -111,5 +110,21 @@ public class BarTeste {
        
 	}
 	
+	@Test
+	public void TestaQuantidaSocioAposSaida()
+	{
+		//Total 7 pessoas 1 SOCIO 28.57% incialmente
+	    oBar.AdicionaCliente("Fulano", "384.490.360-71", 'M', 22, false, "");
+	    oBar.AdicionaCliente("Fulano", "384.490.360-80", 'M', 22, false, "");
+	    oBar.AdicionaCliente("Nome", "477.119.570-62", 'M', 22,   false, "");
+	    oBar.AdicionaCliente("Teste", "934.828.380-43", 'F', 22,  true, "3333");
+	   
+	    assertEquals(28.57,oBar.retornaPercentualClienteNoBar("SOCIO"),1);
+	    
+	    oBar.RegistraSaidaEntradaCliente("934.828.380-43", true);
+	    
+	    assertEquals(16.66,oBar.retornaPercentualClienteNoBar("SOCIO"),1);
+	    
+	}
 	
 }
