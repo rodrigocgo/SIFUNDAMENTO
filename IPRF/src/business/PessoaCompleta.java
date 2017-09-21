@@ -2,22 +2,45 @@ package business;
 
 public class PessoaCompleta extends Pessoa
 {
-	private long lContruibuicaoPrevidenciaria;
+	private int iIdade;
+	private double dTotalRendimento;
+	private int iNumeroDependetes;
 	
-	public PessoaCompleta(String sNome, String sCPF,int iIdade,long lTotalRendimento, long lContruibuicaoPrevidenciaria) 
+	public PessoaCompleta(String sNome, String sCPF,int iIdade,double dTotalRendimento, long lContruibuicaoPrevidenciaria, int iNumeroDependetes) 
 	{
-		super(sNome, sCPF,iIdade,lTotalRendimento);
-	    this.lContruibuicaoPrevidenciaria = lContruibuicaoPrevidenciaria;
+		super(sNome, sCPF,lContruibuicaoPrevidenciaria);
+		this.iIdade = iIdade;
+		this.dTotalRendimento = dTotalRendimento;
+		this.iNumeroDependetes = iNumeroDependetes;
 	}
 
-	public long getContruibuicaoPrevidenciaria() 
+	public int getNumeroDependetes()
 	{
-		return lContruibuicaoPrevidenciaria;
+		return iNumeroDependetes;
 	}
 
-	public void setContruibuicaoPrevidenciaria(long lContruibuicaoPrevidenciaria) 
+	public void setNumeroDependetes(int iNumeroDependetes) 
 	{
-		this.lContruibuicaoPrevidenciaria = lContruibuicaoPrevidenciaria;
+		this.iNumeroDependetes = iNumeroDependetes;
 	}
 
+	public int getIdade() 
+	{
+		return iIdade;
+	}
+	
+	public void setIdade(int iIdade) 
+	{
+		this.iIdade = iIdade;
+	}
+	
+	public double getlTotalRendimento()
+	{
+		return dTotalRendimento;
+	}
+	
+	public void setlTotalRendimento(double lTotalRendimento) 
+	{
+		this.dTotalRendimento = lTotalRendimento;
+	}
 }
