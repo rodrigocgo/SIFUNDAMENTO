@@ -9,8 +9,7 @@ public class DeclaraoSimples extends Declaracao
 	}
 	
 	private void CalculaBase()
-	{
-	     
+	{   
 		double dBaseCalculada = CalculaDesconto(5.0,getContruibuicaoPrevidenciaria()-getTotalRendimento());
 	     this.setBaseCalculo(dBaseCalculada);
 	}

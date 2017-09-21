@@ -5,13 +5,16 @@ public class PessoaCompleta extends Pessoa
 	private int iIdade;
 	private double dTotalRendimento;
 	private int iNumeroDependetes;
+	private DeclaracaoCompleta oDeclaracaoCompleta;
 	
-	public PessoaCompleta(String sNome, String sCPF,int iIdade,double dTotalRendimento, long lContruibuicaoPrevidenciaria, int iNumeroDependetes) 
+	public PessoaCompleta(String sNome, String sCPF,int iIdade,double dTotalRendimento, double dContruibuicaoPrevidenciaria, int iNumeroDependetes) 
 	{
-		super(sNome, sCPF,lContruibuicaoPrevidenciaria);
+		super(sNome, sCPF,dContruibuicaoPrevidenciaria);
 		this.iIdade = iIdade;
 		this.dTotalRendimento = dTotalRendimento;
 		this.iNumeroDependetes = iNumeroDependetes;
+		oDeclaracaoCompleta = new DeclaracaoCompleta(iIdade,iNumeroDependetes, dTotalRendimento,dContruibuicaoPrevidenciaria);
+		
 	}
 
 	public int getNumeroDependetes()
@@ -42,5 +45,10 @@ public class PessoaCompleta extends Pessoa
 	public void setlTotalRendimento(double lTotalRendimento) 
 	{
 		this.dTotalRendimento = lTotalRendimento;
+	}
+	
+	public double calculaImposto()
+	{
+		return oDeclaracaoCompleta.CalculaImposto();
 	}
 }
